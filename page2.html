@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Travels Vehicle Booking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="raj.jpg" sizes="32x32" />
+
+  <style>
+    .main-header {
+      background-color: white;
+      color: #1c5bad;
+      padding: 20px 15px 10px 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .main-header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .main-header h1 {
+      font-size: 1.8rem;
+      margin: 0;
+      font-weight: 700;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+    }
+    #successMessage {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+<!-- ✅ Header -->
+<div class="container my-4">
+  <div class="main-header">
+    <img src="logo img.png" alt="Website Logo">
+    <h1>Travels Vehicle Booking Online</h1>
+  </div>
+</div>
+
+<!-- ✅ Google Map -->
+<div class="container mb-4">
+  <iframe id="map" src="https://maps.google.com/maps?q=Eluru&z=15&output=embed"></iframe>
+</div>
+
+<!-- ✅ Booking Success Message -->
+<div class="container mb-4">
+  <div id="successMessage" class="alert alert-success text-center fw-bold fs-5">
+    ✅ Booking Successful! Your vehicle has been booked.
+    <br><br>
+    <a href="index.html" class="btn btn-success mt-3">Continue</a>
+  </div>
+</div>
+
+<!-- ✅ Booking Form -->
+<div class="container mb-5">
+  <form id="bookingForm" class="row g-3">
+
+    <div class="col-md-6">
+      <input type="text" name="name" class="form-control" placeholder="Name" required>
+    </div>
+
+    <div class="col-md-6">
+      <input type="tel" name="phone" class="form-control" placeholder="Phone" required>
+    </div>
+
+    <div class="col-md-6">
+      <input type="text" name="door" class="form-control" placeholder="Door No / Building No" required>
+    </div>
+
+    <div class="col-md-6">
+      <input type="text" name="pincode" class="form-control" placeholder="Pincode" required>
+    </div>
+
+    <div class="col-md-6">
+      <input type="text" name="location" class="form-control" placeholder="Location (nearby landmark)" required>
+    </div>
+
+    <div class="col-md-6">
+      <input type="text" name="pickup" id="pickup" class="form-control" placeholder="Pickup Location" required oninput="updateMap(this.value)">
+    </div>
+
+    <div class="col-md-6">
+      <input type="text" name="drop" class="form-control" placeholder="Drop Location" required>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Pickup Date</label>
+      <input type="date" name="pickupDate" class="form-control" required>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Drop Date</label>
+      <input type="date" name="dropDate" class="form-control" required>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary btn-lg w-100">Book Now</button>
+    </div>
+  </form>
+</div>
+
+<!-- ✅ Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // 📍 Update Google Map
+  function updateMap(location) {
+    const mapFrame = document.getElementById("map");
+    const encoded = encodeURIComponent(location);
+    mapFrame.src = `https://maps.google.com/maps?q=${encoded}&z=15&output=embed`;
+  }
+
+  // 📤 Submit Form
+  document.getElementById("bookingForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = Object.fromEntries(new FormData(form).entries());
+
+    // ✅ WhatsApp Message
+    const { name, phone, pickup, drop, pickupDate } = formData;
+    const message = `Hi ${name}, your vehicle booking from ${pickup} to ${drop} on ${pickupDate} has been received. Thank you for choosing us!`;
+    const encodedMsg = encodeURIComponent(message);
+
+    // ✅ Send to Google Sheets
+    fetch("https://script.google.com/macros/s/AKfycbytKidjL_C4Lci9oBmGIHelfa7kSqZuXwWm2bAPzA0Eazfs2W243QqPGrrsI_VIGi68/exec", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData)
+    })
+    .then(res => res.text())
+    .then(data => {
+      form.reset();
+      updateMap("Eluru");
+      document.getElementById("successMessage").style.display = "block"; // ✅ Show success
+
+      // 🔗 Open WhatsApp
+      window.open(`https://wa.me/91${phone}?text=${encodedMsg}`, "_blank");
+    })
+    .catch(err => {
+      alert("❌ Error: " + err);
+    });
+  });
+</script>
+
+</body>
+</html>

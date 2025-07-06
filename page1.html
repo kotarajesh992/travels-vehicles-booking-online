@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajesh Travels Vehicle Booking Online</title>
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="raj.jpg" sizes="32x32" />
+
+  <!-- ✅ Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- 🔐 Login Protection -->
+  <script>
+    if (sessionStorage.getItem("rajesh_logged_in") !== "true") {
+      alert("⚠️ Please sign in first to access this page.");
+      window.location.href = "sign.html";
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1470&q=80') center center / cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 100px 20px 200px;
+      position: relative;
+    }
+
+    .search-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      margin: -100px auto 40px;
+      z-index: 10;
+      position: relative;
+    }
+
+    .car-types img {
+      width: 100%;
+      height: auto;
+      max-height: 100px;
+      object-fit: contain;
+    }
+
+    .car-types .card {
+      border: none;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    /* ✅ Header Styling */
+    .main-header {
+      background-color: transparent;
+      color: #1c5bad;
+      padding: 20px 15px 10px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .main-header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-header h1 {
+      font-size: 1.8rem;
+      margin: 0;
+      font-weight: 700;
+      flex: 1;
+    }
+
+    .logout-btn {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .logout-btn:hover {
+      background-color: #c82333;
+    }
+
+    @media (max-width: 576px) {
+      .main-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .main-header h1 {
+        font-size: 1.5rem;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Header with Round Logo, Title, and Logout -->
+  <div class="container-fluid main-header">
+    <div class="d-flex align-items-center gap-3">
+      <img src="logo img.png" alt="Website Logo" class="img-fluid">
+      <h1>Travels Vehicle Booking Online</h1>
+    </div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- 🌟 Hero Section -->
+  <section class="hero">
+    <h1 class="display-4 fw-bold">Rent a car<br>in seconds</h1>
+  </section>
+
+  <!-- 🚘 Booking Search Box -->
+  <div class="container search-box">
+    <div class="row">
+      <div class="col-md-3 mb-2">
+        <input type="text" class="form-control" placeholder="Pick-up Location" />
+      </div>
+      <div class="col-md-2 mb-2">
+        <label class="form-label">Pick-up Date</label>
+        <input type="date" class="form-control" />
+      </div>
+      <div class="col-md-2 mb-2">
+        <label class="form-label">Drop-off Date</label>
+        <input type="date" class="form-control" />
+      </div>
+      <div class="col-md-3 mb-2">
+        <select class="form-control">
+          <option>Car Type</option>
+          <option>7 seater car</option>
+          <option>5 Seater car</option>
+        </select>
+      </div>
+      <div class="col-md-2 mb-2">
+        <a href="page2.html" class="btn btn-primary btn-block w-100">Book Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🚗 How it Works -->
+  <div class="container my-5">
+    <h2 class="section-title text-center">How it works</h2>
+    <div class="row text-center">
+      <div class="col-md-4">
+        <h5><strong>1. Choose Location</strong></h5>
+        <p>Select your pick-up location to begin.</p>
+      </div>
+      <div class="col-md-4">
+        <h5><strong>2. Pick-up Date</strong></h5>
+        <p>Choose the date you need to rent a car.</p>
+      </div>
+      <div class="col-md-4">
+        <h5><strong>3. Select a Car</strong></h5>
+        <p>5 seater car and 7 seater car</p>
+      </div>
+       <div class="row text-center">
+        <div class="col-lg-6 mx-auto">
+          <h4>💰 Pricing</h4>
+          <p class="mb-1">₹15 per km</p>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 🚙 Car Types Section -->
+  <div class="container my-5">
+    <h2 class="section-title text-center">Our car types</h2>
+    <div class="row car-types g-4">
+      <div class="col-md-3">
+        <div class="card">
+          <img src="carrr.jpg" alt="7 Seater" class="mx-auto">
+          <h5 class="mt-3">7 seater car</h5>
+          <p class="text-muted">Fuel-efficient and affordable</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <img src="car all.jpg" alt="SUV" class="mx-auto">
+          <h5 class="mt-3">SUV</h5>
+          <p class="text-muted">Spacious and comfortable</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <img src="5seater car.jpg" alt="5 Seater" class="mx-auto">
+          <h5 class="mt-3">5 seater car</h5>
+          <p class="text-muted">High-end vehicles for a premium experience</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <img src="bootspace.webp" alt="Boot Space" class="mx-auto">
+          <h5 class="mt-3">Boot Space</h5>
+          <p class="text-muted">Ideal for group travel and large luggage</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 📦 Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- 🔓 Logout Logic -->
+  <script>
+    function logout() {
+      sessionStorage.removeItem("rajesh_logged_in");
+      alert("👋 You have been logged out.");
+      window.location.href = "sign.html";
+    }
+  </script>
+</body>
+</html>

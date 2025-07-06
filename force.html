@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajesh Travels Vehicle Booking Online</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="raj.jpg" sizes="32x32" />
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .hero {
+      background: url('force4.jpg') no-repeat center center/cover;
+      height: 500px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .search-box {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: -60px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 800px;
+    }
+    .car-types img {
+      width: 100%;
+      height: 140px;
+      object-fit: contain;
+    }
+    .main-header {
+      background-color: transparent;
+      color: #1c5bad;
+      padding: 20px 10px;
+      display: flex;
+      align-items: center;
+    }
+    .main-header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-right: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .main-header h1 {
+      font-size: 2rem;
+      margin: 0;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <!-- ✅ Header: Logo Left, Title Right Inline -->
+  <div class="container-fluid main-header">
+    <div class="d-flex align-items-center">
+      <img src="logo img.png" alt="Website Logo" class="img-fluid" />
+      <h1>Travels Vehicle Booking Online</h1>
+    </div>
+  </div>
+
+  <section class="hero">
+    <h1>Rent a vehicles</h1>
+    <h2>in seconds</h2>
+  </section> 
+  
+  <div class="container search-box">
+    <div class="row">
+      <div class="col-md-3 mb-2">
+        <input type="text" class="form-control" placeholder="Pick-up Location" />
+      </div>
+      <div class="col-md-2 mb-2">
+        <label>Pick-up Date</label>
+        <input type="date" class="form-control" />
+      </div>
+      <div class="col-md-2 mb-2">
+        <label>Drop-off Date</label>
+        <input type="date" class="form-control" />
+      </div>
+      <div class="col-md-3 mb-2">
+        <select class="form-control">
+          <option>Vehicle Type</option>
+          <option>Mini 14 seater</option>
+          <option>20 seater</option>
+        </select>
+      </div>
+       <div class="col-md-2 mb-2">
+        <a href="page2.html" class="btn btn-primary btn-block w-100">Book Now</a>
+      </div>
+    </div>
+  </div> 
+
+  <div class="container mt-5">
+    <h3>How it works</h3>
+    <div class="row text-center mt-3">
+      <div class="col-md-4">
+        <h5><strong>1. Choose Location</strong></h5>
+        <p>Select your pick-up location to begin.</p>
+      </div>
+      <div class="col-md-4">
+        <h5><strong>2. Pick-up Date</strong></h5>
+        <p>Choose the date you need to rent a bus.</p>
+      </div>
+      <div class="col-md-4">
+        <h5><strong>3. Select a Vehicle</strong></h5>
+        <p>Browse from a wide range of available vehicles.</p>
+      </div>
+       <div class="row text-center">
+        <div class="col-lg-6 mx-auto">
+          <h4>💰 Pricing</h4>
+          <p class="mb-1">₹15 per km</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <h3>Our Bus Types</h3>
+    <div class="row text-center mt-3 car-types">
+      <div class="col-md-3">
+        <img src="force5.jpg" alt="Mini Bus" />
+        <h5>Mini vehicle</h5>
+        <p>Compact and affordable for small groups 14 seater.</p>
+      </div>
+      <div class="col-md-3">
+        <img src="force2 (1).jpg" alt="Tourist Bus" />
+        <h5>20 seater</h5>
+        <p>Comfortable and spacious for sightseeing.</p>
+      </div>
+      <div class="col-md-3">
+        <img src="force 3 (1).jpg" alt="Luxury Coach" />
+        <h5>20 seater</h5>
+        <p>Safety Tourist Travels vehicle</p>
+      </div>
+    </div>
+  </div>
+<script>
+    function logout() {
+      sessionStorage.removeItem("rajesh_logged_in");
+      alert("👋 You have been logged out.");
+      window.location.href = "sign.html";
+    }
+  </script>
+</body>
+</html>

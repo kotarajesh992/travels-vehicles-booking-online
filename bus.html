@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajesh Travels Vehicle Booking Online</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="raj.jpg" sizes="32x32" />
+
+  <!-- 🔐 Login Check Script -->
+  <script>
+    if (sessionStorage.getItem("rajesh_logged_in") !== "true") {
+      alert("❌ Please sign in to access the booking page.");
+      window.location.href = "sign.html";
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .hero {
+      background: url('bus4.jpg') no-repeat center center/cover;
+      height: 400px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .search-box {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: -40px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .main-header {
+      background-color: transparent;
+      color: #1c5bad;
+      padding: 20px 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .main-header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-right: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .main-header h1 {
+      font-size: 1.8rem;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .car-types img {
+      width: 100%;
+      height: 140px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    h3 {
+      font-weight: bold;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Header -->
+  <div class="container-fluid main-header">
+    <div class="d-flex align-items-center">
+      <img src="logo img.png" alt="Website Logo" />
+      <h1>Travels Vehicle Booking Online</h1>
+    </div>
+  </div>
+
+  <!-- ✅ Hero Section -->
+  <section class="hero">
+    <h1>Rent a Bus</h1>
+    <h3>Instant Booking in Seconds</h3>
+  </section> 
+
+  <!-- ✅ Search Box -->
+  <div class="container search-box mt-4">
+    <div class="row">
+      <div class="col-md-3 mb-2">
+        <input type="text" class="form-control" placeholder="Pick-up Location" />
+      </div>
+      <div class="col-md-2 mb-2">
+        <label>Pick-up Date</label>
+        <input type="date" class="form-control" />
+      </div>
+      <div class="col-md-2 mb-2">
+        <label>Drop-off Date</label>
+        <input type="date" class="form-control" />
+      </div>
+      <div class="col-md-3 mb-2">
+        <select class="form-control">
+          <option selected disabled>Choose Bus Type</option>
+          <option>7 Seater Car</option>
+          <option>5 Seater Car</option>
+          <option>Mini Bus</option>
+          <option>Luxury Coach</option>
+        </select>
+      </div>
+      <div class="col-md-2 mb-2">
+        <a href="page2.html" class="btn btn-primary btn-block">Book Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ How it Works -->
+  <div class="container mt-5">
+    <h3 class="text-center">How It Works</h3>
+    <div class="row text-center mt-3">
+      <div class="col-md-4">
+        <h5><strong>1. Choose Location</strong></h5>
+        <p>Select your pick-up location to begin.</p>
+      </div>
+      <div class="col-md-4">
+        <h5><strong>2. Pick-up Date</strong></h5>
+        <p>Choose the date you need to rent a bus.</p>
+      </div>
+      <div class="col-md-4">
+        <h5><strong>3. Select a Bus</strong></h5>
+        <p>Browse from a wide range of available buses.</p>
+      </div>
+      
+       <div class="row text-center">
+        <div class="col-lg-6 mx-auto">
+          <h4>💰 Pricing</h4>
+          <p class="mb-1">₹15 per km</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Bus Types -->
+  <div class="container mt-5">
+    <h3 class="text-center">Our Bus Types</h3>
+    <div class="row text-center mt-3 car-types">
+      <div class="col-md-3 mb-3">
+        <img src="bus2 (1).jpg" alt="Mini Bus" />
+        <h5>Mini Bus</h5>
+        <p>Compact and affordable for small groups.</p>
+      </div>
+      <div class="col-md-3 mb-3">
+        <img src="30-seater-bus (1).webp" alt="Tourist Bus" />
+        <h5>Tourist Bus</h5>
+        <p>Comfortable and spacious for sightseeing.</p>
+      </div>
+      <div class="col-md-3 mb-3">
+        <img src="bus3.jpg" alt="Luxury Coach" />
+        <h5>51 Seats Bus</h5>
+        <p>Spacious and elegant for long trips.</p>
+      </div>
+      <div class="col-md-3 mb-3">
+        <img src="bus.jpj.jpg" alt="Sleeper Bus" />
+        <h5>Sleeper Bus</h5>
+        <p>Perfect for overnight journeys and rest.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Logout Function -->
+  <script>
+    function logout() {
+      sessionStorage.removeItem("rajesh_logged_in");
+      sessionStorage.removeItem("rajesh_name");
+      sessionStorage.removeItem("rajesh_email");
+      alert("👋 You have been logged out.");
+      window.location.href = "sign.html";
+    }
+  </script>
+
+</body>
+</html>
