@@ -132,7 +132,7 @@
     const encodedMsg = encodeURIComponent(message);
 
     // ✅ Send to Google Sheets
-    fetch("https://script.google.com/macros/s/AKfycbytKidjL_C4Lci9oBmGIHelfa7kSqZuXwWm2bAPzA0Eazfs2W243QqPGrrsI_VIGi68/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbySmwoK9Zz1k186URHtdWBrpPKEGpWp-5KVuHHsPd-prgz1ko651dhG2R_S078tyxSv/exec"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData)
